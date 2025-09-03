@@ -1,0 +1,9 @@
+﻿{
+  "name": "dunjon-tools",
+  "private": true,
+  "scripts": {
+    "events:gen": "node tools/generate-events.js",
+    "validate:all": "echo \"(Schemas will be wired later)\""
+  },
+  "devDependencies": {}
+}

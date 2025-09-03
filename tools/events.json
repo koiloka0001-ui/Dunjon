@@ -1,0 +1,41 @@
+{
+  "$schemaVersion": 1,
+  "events": [
+    {
+      "name": "player_dash",
+      "payload": { "dir": "vec2", "ifr_ms": "int", "stamina_after": "int" },
+      "who_emits": ["Player"],
+      "who_listens": ["UI","SFX","VFX","Telemetry"]
+    },
+    {
+      "name": "attack_hit",
+      "payload": { "attacker": "id", "target": "id", "dmg": "int" },
+      "who_emits": ["Combat"],
+      "who_listens": ["VFX","SFX","Telemetry"]
+    },
+    {
+      "name": "player_damaged",
+      "payload": { "hp_after": "int", "source": "id" },
+      "who_emits": ["Health"],
+      "who_listens": ["UI","SFX","VFX","Telemetry"]
+    },
+    {
+      "name": "enemy_spawned",
+      "payload": { "type": "str", "pos": "vec2" },
+      "who_emits": ["Spawner","RoomLoader"],
+      "who_listens": ["Telemetry"]
+    },
+    {
+      "name": "enemy_killed",
+      "payload": { "type": "str", "pos": "vec2" },
+      "who_emits": ["Health"],
+      "who_listens": ["UI","Loot","Telemetry","RoomGates"]
+    },
+    {
+      "name": "room_cleared",
+      "payload": { "id": "str", "time_ms": "int" },
+      "who_emits": ["RoomGates"],
+      "who_listens": ["SaveSystem","UI","Telemetry"]
+    }
+  ]
+}
