@@ -1,0 +1,18 @@
+﻿# Node (JavaScript tools)
+node_modules/
+dist/
+.cache/
+
+# Godot
+.import/
+.godot/
+*.translation
+*.import
+*.tmp
+
+# Unity (if you ever use it)
+Library/
+Temp/
+Logs/
+Obj/
+Build/
