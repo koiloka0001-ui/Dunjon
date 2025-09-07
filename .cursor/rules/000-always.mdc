@@ -1,0 +1,62 @@
+---
+title: Dunjon — ALWAYS (project invariants)
+description: Canonical facts the agent must honor. If any item changes, update tests/docs and bump CONSTANTS_VERSION.
+alwaysApply: true
+---
+
+## Identity
+- Engine: **Godot 4.x (standard, non-.NET)**
+- Targets: **PC (1080p/1440p)**
+- Input: **Gamepad + Keyboard**
+- Aspect/Resolution: Design at **1920×1080**; scale with integer-ish viewport; pillarbox if needed.
+
+## Time & Determinism
+- Physics FPS: **60**
+- VSync: **OFF** for determinism tests; **ON** for playtests/release.
+- Put gameplay in `_physics_process`; visuals-only in `_process`.
+- RNG: Use a seeded `RandomNumberGenerator` per run for gameplay outcomes.
+
+## World Scale
+- Tile size: **32×32 px**; pixels-per-meter: **32**.
+- Coords: +X right, +Y down; rotations in **degrees** (clockwise positive).
+- Gravity: project default unless a scene has a documented override.
+
+## Authoring Contracts (Tiled → Godot)
+- Export format: **JSON** only (no TMX committed).
+- Required layers per room: **Ground, Collision, Entities, Spawns**.
+- Entity object props: `{ type: string, x: number, y: number, id?: number, name?: string }`.
+- Room files: `game-*/data/rooms/<World><Idx>.json` (e.g., `A1.json`).
+- Required autoloads present: `Events`, `GameConfig`, `SaveBus`.
+
+## Code Conventions (summary)
+- Language: **GDScript 2.0**. Prefer composition over deep inheritance.
+- Prefer **signals** (and `await`) to cross-node calls; singletons used sparingly (only the three above).
+- Logging: `print_rich` allowed in dev; gate noisy logs behind `GameConfig.debug`.
+
+## Assets & Pipeline
+- Git LFS for: `*.png *.ogg *.wav *.ttf *.atlas`.
+- Texture max (PC): **2048** unless UI; use import compression defaults.
+- Audio: **OGG** (44.1kHz); mono SFX unless stereo is essential.
+
+## Save/Data
+- Save format: **JSON** (pretty in dev, minified in release).
+- `SAVE_SCHEMA_VERSION` controls migrations; bump on breaking changes.
+- Saves live in user data dir; **no personal telemetry** in saves.
+
+## Performance Budgets (60 FPS target)
+- Logic: ≤ **4 ms**; Render: ≤ **8 ms**; Other: ≤ **3 ms** (headroom).
+- Draw calls target: ≤ **800** in busy rooms.
+- Peak RAM during play: ≤ **1.5 GB**.
+
+## Testing & Gates
+- Must pass pre-commit: `pnpm rooms:check` and `pnpm validate:all`.
+- Smoke boot: main scene loads ≤ **2s** on target PC.
+- Determinism check: same seed ⇒ identical spawns/orders for 60s test.
+
+## Security & Licensing
+- **Never commit** `.env` or secrets; pre-commit blocks them.
+- Third-party assets require a license entry in `licenses/THIRD_PARTY.md`.
+
+## Change Control
+- Bump **CONSTANTS_VERSION** whenever a rule here changes.
+- Same PR must include: updated docs, migrations (if save/data), and test updates.

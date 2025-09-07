@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Options",
+  "type": "object",
+  "properties": {
+    "screen_shake": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "damage_flash": { "type": "boolean" },
+    "aim_assist": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+    "difficulty": { "type": "string", "enum": ["easy", "normal", "hard"] }
+  },
+  "required": ["screen_shake", "damage_flash", "aim_assist", "difficulty"]
+}

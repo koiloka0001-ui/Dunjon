@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": { "type": "string" },
+      "hp": { "type": "number" },
+      "attack": { "type": "number" }
+    },
+    "required": ["id", "hp", "attack"],
+    "additionalProperties": false
+  }
+}
+

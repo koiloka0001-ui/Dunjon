@@ -1,9 +1,27 @@
-﻿{
+{
   "name": "dunjon-tools",
   "private": true,
   "scripts": {
     "events:gen": "node tools/generate-events.js",
-    "validate:all": "echo \"(Schemas will be wired later)\""
+    "prebuild": "npm run events:gen",
+    "rooms:check": "node tools/check-room.js game-godot/data/rooms/A1.json",
+    "validate:tuning": "npx ajv validate -s schemas/tuning-schema.json -d \"game-*/data/tuning.json\"",
+    "validate:enemies": "npx ajv validate -s schemas/enemies-schema.json -d \"game-*/data/enemies.json\"",
+    "validate:save": "npx ajv validate -s schemas/save-schema.json -d \"test/fixtures/save*.json\"",
+    "validate:all": "npm-run-all -s validate:tuning validate:enemies validate:save",
+    "replay:record": "echo TODO (engine)",
+    "replay:run": "node tools/replay-runner.js recordings/last.jsonl",
+    "digest:check": "node tools/check-digest.js",
+    "prepare": "husky"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-cli": "^5.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
+    "npm-run-all": "^4.1.5"
+  },
+  "lint-staged": {
+    "*.json": "npm run validate:all"
+  }
 }

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://hud_new_working"]
+
+[ext_resource type="Script" path="res://scenes/ui/HUD_New.gd" id="1_0"]
+
+[node name="HUD_New" type="Node2D"]
+script = ExtResource("1_0")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 500.0
+offset_bottom = 200.0
+text = "HUD_New: Node2D Root"
+modulate = Color(1, 0, 1, 1)
+

@@ -16,3 +16,9 @@ Temp/
 Logs/
 Obj/
 Build/
+
+# Ignore replay recordings (keep folder)
+/recordings/*
+!/recordings/.gitkeep
+!/recordings/example.jsonl
+!/recordings/README.md

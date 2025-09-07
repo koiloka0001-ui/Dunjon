@@ -1,0 +1,36 @@
+---
+title: Dunjon — ALWAYS (naming invariants)
+description: Non-negotiable naming rules that prevent bugs and review churn.
+alwaysApply: true
+---
+
+## Casing by Kind
+- Classes/Scenes & Node names: **PascalCase** (`EnemySpawner`, `HealthBar.gd`, `PlayerShip.tscn`).
+- Files: **snake_case** (`enemy_spawner.gd`, `boss_room.tscn`).
+- Variables & functions: **snake_case** (`current_hp`, `apply_damage()`).
+- Constants: **SCREAMING_SNAKE** (`MAX_ENEMIES`).
+
+## Booleans
+- Must start with **is_** or **has_** (`is_alive`, `has_keycard`).
+
+## Units in Names (make physics explicit)
+- Suffixes: **_px, _tiles, _s, _ms, _deg, _rad, _px_s**.
+- Examples: `move_speed_px_s`, `cooldown_s`, `rotation_deg`.
+
+## Signals & Handlers
+- Signals: **past-tense snake_case** (`enemy_spawned`, `player_damaged`, `room_cleared`).
+- Handlers: **on_<source>_<signal>()** (`on_spawner_enemy_spawned()`).
+
+## Privacy & API Surface
+- Leading `_` means **private**; public API has no underscore.
+
+## Exports & Singletons
+- `@export var` names **must include units** where relevant.
+- Autoload singletons are **PascalCase** (`Events`, `GameConfig`, `SaveBus`) and used sparingly.
+
+## Function Verbs = Intent
+- Accessors: `get_/set_` for pure access.
+- Side-effects: `apply_/spawn_/schedule_/ensure_/try_` (don’t invent synonyms).
+
+## Abbreviation Whitelist (the only allowed)
+- **id, ui, hp, xp, ai, fx, rng, pos, vel**. Everything else: **spell it out**.

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://test11_hud_standalone"]
+
+[ext_resource type="Script" path="res://scenes/ui/HUD.gd" id="1_0"]
+
+[node name="Test11_HUD_Standalone" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 500.0
+offset_bottom = 200.0
+text = "TEST 11: HUD SCRIPT AS CHILD"
+modulate = Color(1, 0, 1, 1)
+
+[node name="HUD" type="Node2D" parent="."]
+script = ExtResource("1_0")

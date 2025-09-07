@@ -1,0 +1,15 @@
+{
+  "player_speed": 300,
+  "dash_distance": 250,
+  "dash_cooldown": 0.1,
+  "stamina_regen": 2.0,
+
+  "enemy_speed": 60,
+  "enemy_attack_cooldown": 2.0,
+  "enemy_damage": 1,
+
+  "attack_cooldown": 0.1,
+  "ammo_max": 10,
+  "reload_time": 0.5
+}
+

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://test10_hud_new"]
+
+[ext_resource type="PackedScene" uid="uid://hud_new_working" path="res://scenes/ui/HUD_New.tscn" id="1_0"]
+
+[node name="Test10_HUD_New" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 500.0
+offset_bottom = 200.0
+text = "TEST 10: NODE2D WITH HUD_New INSTANTIATED"
+modulate = Color(1, 0, 1, 1)
+
+[node name="HUD_New" parent="." instance=ExtResource("1_0")]
