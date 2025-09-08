@@ -1,0 +1,19 @@
+{
+  "player": {
+    "health": 100,
+    "dashCooldown": 1.0,
+    "moveSpeed": 3.0
+  },
+  "enemies": {
+    "damageMultiplier": 0.5,
+    "healthMultiplier": 0.75
+  },
+  "projectiles": {
+    "speed": 5.0,
+    "lifetime": 2.0
+  },
+  "drops": {
+    "healthChance": 0.2,
+    "ammoChance": 0.1
+  }
+}

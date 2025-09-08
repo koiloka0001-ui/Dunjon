@@ -51,6 +51,24 @@
           "width": 16,
           "x": 160,
           "y": 120
+        },
+        {
+          "height": 0,
+          "id": 2,
+          "name": "enemies",
+          "properties": [
+            {
+              "name": "type",
+              "type": "string",
+              "value": "group"
+            }
+          ],
+          "rotation": 0,
+          "type": "group",
+          "visible": true,
+          "width": 0,
+          "x": 0,
+          "y": 0
         }
       ],
       "opacity": 1,
@@ -66,17 +84,17 @@
       "objects": [
         {
           "height": 16,
-          "id": 2,
+          "id": 3,
           "name": "room_id",
           "properties": [
             {
-              "name": "room_id",
+              "name": "value",
               "type": "string",
-              "value": "A1"
+              "value": "A6"
             }
           ],
           "rotation": 0,
-          "type": "room_id",
+          "type": "meta",
           "visible": true,
           "width": 16,
           "x": 0,
@@ -84,7 +102,7 @@
         },
         {
           "height": 16,
-          "id": 3,
+          "id": 4,
           "name": "door_north",
           "properties": [
             {
@@ -104,6 +122,29 @@
           "width": 16,
           "x": 160,
           "y": 0
+        },
+        {
+          "height": 16,
+          "id": 5,
+          "name": "door_east",
+          "properties": [
+            {
+              "name": "type",
+              "type": "string",
+              "value": "door"
+            },
+            {
+              "name": "dir",
+              "type": "string",
+              "value": "east"
+            }
+          ],
+          "rotation": 0,
+          "type": "door",
+          "visible": true,
+          "width": 16,
+          "x": 320,
+          "y": 120
         }
       ],
       "opacity": 1,
@@ -114,7 +155,7 @@
     }
   ],
   "nextlayerid": 5,
-  "nextobjectid": 4,
+  "nextobjectid": 6,
   "orientation": "orthogonal",
   "renderorder": "right-down",
   "tiledversion": "1.11.2",

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "charger",
+    "displayName": "Charger",
+    "stats": {
+      "health": 50,
+      "speed": 120.0,
+      "damage": 25
+    },
+    "behavior": "rush",
+    "notes": "Medium health enemy that rushes player with melee attacks"
+  },
+  {
+    "id": "sniper",
+    "displayName": "Sniper",
+    "stats": {
+      "health": 20,
+      "speed": 80.0,
+      "damage": 40
+    },
+    "behavior": "sniper",
+    "notes": "Fragile enemy with long-range projectile attacks and slow fire rate"
+  },
+  {
+    "id": "summoner",
+    "displayName": "Summoner",
+    "stats": {
+      "health": 30,
+      "speed": 60.0,
+      "damage": 15
+    },
+    "behavior": "summoner",
+    "notes": "Low health enemy that summons minions to fight"
+  },
+  {
+    "id": "brute",
+    "displayName": "Brute",
+    "stats": {
+      "health": 150,
+      "speed": 40.0,
+      "damage": 60
+    },
+    "behavior": "TODO",
+    "notes": "Placeholder - very high health, slow melee enemy. Behavior implementation pending"
+  }
+]
