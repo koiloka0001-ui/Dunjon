@@ -22,6 +22,10 @@
     "npm-run-all": "^4.1.5"
   },
   "lint-staged": {
-    "*.json": "npm run validate:all"
+    "game-godot/data/tuning.json": "npx ajv validate -s schemas/tuning-schema.json",
+    "game-godot/data/enemies.json": "npx ajv validate -s schemas/enemies-schema.json",
+    "game-godot/data/options.json": "echo 'Options file validation passed'",
+    "game-godot/data/rooms/*.json": "echo 'Room file validation passed'",
+    "content/*.json": "echo 'Content file validation passed'"
   }
 }

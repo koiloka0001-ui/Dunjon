@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqj8x7y8n9k3m"]
+
+[ext_resource type="Script" path="res://ui/DevRoomMenu.gd" id="1_0"]
+
+[node name="DevRoomMenu" type="CanvasLayer"]
+script = ExtResource("1_0")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="MenuContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+
+[node name="Title" type="Label" parent="Control/MenuContainer"]
+layout_mode = 2
+text = "Developer Room Menu"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/MenuContainer"]
+layout_mode = 2
+
+[node name="RoomSelection" type="HBoxContainer" parent="Control/MenuContainer"]
+layout_mode = 2
+
+[node name="RoomLabel" type="Label" parent="Control/MenuContainer/RoomSelection"]
+layout_mode = 2
+text = "Room:"
+
+[node name="RoomDropdown" type="OptionButton" parent="Control/MenuContainer/RoomSelection"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LoadButton" type="Button" parent="Control/MenuContainer"]
+layout_mode = 2
+text = "Load Room"
+
+[node name="PreviewContainer" type="VBoxContainer" parent="Control/MenuContainer"]
+layout_mode = 2
+visible = false
+
+[node name="PreviewLabel" type="Label" parent="Control/MenuContainer/PreviewContainer"]
+layout_mode = 2
+text = "Preview:"
+horizontal_alignment = 1
+
+[node name="PreviewImage" type="TextureRect" parent="Control/MenuContainer/PreviewContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(320, 240)
+stretch_mode = 5
+
+[node name="CloseButton" type="Button" parent="Control/MenuContainer"]
+layout_mode = 2
+text = "Close (3 or F10)"

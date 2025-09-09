@@ -1,0 +1,88 @@
+[gd_scene load_steps=2 format=3 uid="uid://working_options"]
+
+[ext_resource type="Script" path="res://scenes/ui/OptionsMenu_working.gd" id="1_0"]
+
+[node name="OptionsMenu" type="CanvasLayer"]
+script = ExtResource("1_0")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScreenShake" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ScreenShake"]
+layout_mode = 2
+text = "Screen Shake:"
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/ScreenShake"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="DamageFlash" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/DamageFlash"]
+layout_mode = 2
+text = "Damage Flash:"
+
+[node name="CheckBox" type="CheckBox" parent="PanelContainer/VBoxContainer/DamageFlash"]
+layout_mode = 2
+button_pressed = true
+
+[node name="AimAssist" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/AimAssist"]
+layout_mode = 2
+text = "Aim Assist:"
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/AimAssist"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 1.0
+step = 0.05
+value = 0.25
+
+[node name="Difficulty" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Difficulty"]
+layout_mode = 2
+text = "Difficulty:"
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/VBoxContainer/Difficulty"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputRemap" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Input Remapping"
+
+[node name="CloseButton" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close (2)"

@@ -13,7 +13,6 @@ var tuning_hud: Node
 
 var health: int
 var stamina: int
-var velocity_px_s: Vector2 = Vector2.ZERO
 
 # HFSM State Management
 var current_state: PlayerState
@@ -27,6 +26,9 @@ func _ready():
 	# Get TuningHUD reference
 	tuning_hud = get_node("/root/TuningHUD")
 	
+	# Add to player group for easy finding
+	add_to_group("player")
+	
 	# Initialize stats
 	health = max_health
 	stamina = max_stamina
@@ -35,6 +37,12 @@ func _ready():
 	var sprite = $Sprite
 	if sprite:
 		sprite.offset = Vector2(-16, -16)  # Center the 32x32 sprite
+		# Add a colored rectangle as placeholder
+		var rect = ColorRect.new()
+		rect.size = Vector2(32, 32)
+		rect.position = Vector2(-16, -16)
+		rect.color = Color.BLUE
+		add_child(rect)
 	
 	# Start in IdleState
 	change_state(IdleState.new())
@@ -44,6 +52,10 @@ func _ready():
 	# EventBus.room_cleared.connect(_on_room_cleared)
 
 func _physics_process(delta):
+	# Debug: Check if any key is pressed at all
+	if Input.is_anything_pressed():
+		print("[Player] Something is pressed!")
+	
 	# Get inputs (handles replay mode)
 	inputs = get_inputs()
 	
@@ -60,12 +72,43 @@ func _physics_process(delta):
 
 func handle_movement_input():
 	"""Handle movement input using Input.get_vector for smooth control"""
+	# Debug individual key presses
+	var left_pressed = Input.is_action_pressed("move_left")
+	var right_pressed = Input.is_action_pressed("move_right")
+	var up_pressed = Input.is_action_pressed("move_up")
+	var down_pressed = Input.is_action_pressed("move_down")
+	
+	# Test built-in UI actions as well
+	var ui_left_pressed = Input.is_action_pressed("ui_left")
+	var ui_right_pressed = Input.is_action_pressed("ui_right")
+	var ui_up_pressed = Input.is_action_pressed("ui_up")
+	var ui_down_pressed = Input.is_action_pressed("ui_down")
+	
+	# Debug any key press
+	if left_pressed or right_pressed or up_pressed or down_pressed:
+		print("[Player] Custom key pressed - Left:", left_pressed, " Right:", right_pressed, " Up:", up_pressed, " Down:", down_pressed)
+	
+	if ui_left_pressed or ui_right_pressed or ui_up_pressed or ui_down_pressed:
+		print("[Player] UI key pressed - Left:", ui_left_pressed, " Right:", ui_right_pressed, " Up:", ui_up_pressed, " Down:", ui_down_pressed)
+	
 	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	# Also try built-in UI actions
+	var ui_input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	# Use UI input if custom input doesn't work
+	if input_vector.length() == 0 and ui_input_vector.length() > 0:
+		input_vector = ui_input_vector
+		print("[Player] Using UI input vector: ", input_vector)
+	
+	# Debug input detection
+	if input_vector.length() > 0:
+		print("[Player] Input detected: ", input_vector)
 	
 	# Store last non-zero direction for dash
 	if input_vector.length() > 0:
 		last_input_direction = input_vector.normalized()
-		print_debug("[Player] Last input direction updated: ", last_input_direction)
+		print("[Player] Last input direction updated: ", last_input_direction)
 	
 	# Apply movement based on input
 	if input_vector.length() > 0:
@@ -74,6 +117,7 @@ func handle_movement_input():
 		if tuning_hud and tuning_hud.has_method("get_value"):
 			speed = tuning_hud.get_value("player_speed", move_speed_px_s)
 		velocity = input_vector.normalized() * speed
+		print("[Player] Moving with velocity: ", velocity)
 	else:
 		velocity = Vector2.ZERO
 
@@ -95,12 +139,12 @@ func get_inputs() -> Dictionary:
 func change_state(new_state: PlayerState):
 	if current_state:
 		current_state.exit()
-		print_debug("[Player] Exiting state: ", current_state.get_state_name())
+		print("[Player] Exiting state: ", current_state.get_state_name())
 	
 	current_state = new_state
 	current_state.player = self
 	current_state.enter()
-	print_debug("[Player] Entering state: ", current_state.get_state_name())
+	print("[Player] Entering state: ", current_state.get_state_name())
 
 func push_state(new_state: PlayerState):
 	if current_state:
@@ -157,7 +201,7 @@ class IdleState extends PlayerState:
 		return "IdleState"
 	
 	func enter():
-		print_debug("[IdleState] Entered")
+		print("[IdleState] Entered")
 	
 	func handle_input(inputs: Dictionary):
 		# Check for dash input first
@@ -191,7 +235,7 @@ class RunState extends PlayerState:
 		return "RunState"
 	
 	func enter():
-		print_debug("[RunState] Entered")
+		print("[RunState] Entered")
 	
 	func update(_delta: float):
 		# Movement is now handled in _physics_process
@@ -231,7 +275,7 @@ class DashState extends PlayerState:
 		return "DashState"
 	
 	func enter():
-		print_debug("[DashState] Entered")
+		print("[DashState] Entered")
 		dash_timer = 0.0
 		# Use cursor direction for dash
 		var dash_direction = get_cursor_direction()

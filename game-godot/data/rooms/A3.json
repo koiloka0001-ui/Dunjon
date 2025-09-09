@@ -3,217 +3,228 @@
   "height": 15,
   "infinite": false,
   "layers": [
-    {
-      "data": "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1",
-      "encoding": "csv",
-      "height": 15,
-      "id": 1,
-      "name": "Ground",
-      "opacity": 1,
-      "type": "tilelayer",
-      "visible": true,
-      "width": 20,
-      "x": 0,
-      "y": 0
-    },
-    {
-      "data": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2\n2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
-      "encoding": "csv",
-      "height": 15,
-      "id": 2,
-      "name": "Collision",
-      "opacity": 1,
-      "type": "tilelayer",
-      "visible": true,
-      "width": 20,
-      "x": 0,
-      "y": 0
-    },
-    {
-      "draworder": "topdown",
-      "id": 3,
-      "name": "Entities",
-      "objects": [
-        {
-          "height": 16,
-          "id": 1,
-          "name": "player_spawn",
-          "properties": [
-            {
-              "name": "type",
-              "type": "string",
-              "value": "player_spawn"
-            }
-          ],
-          "rotation": 0,
-          "type": "player_spawn",
-          "visible": true,
-          "width": 16,
-          "x": 160,
-          "y": 120
-        },
-        {
-          "height": 0,
-          "id": 2,
-          "name": "enemies",
-          "properties": [
-            {
-              "name": "type",
-              "type": "string",
-              "value": "group"
-            }
-          ],
-          "rotation": 0,
-          "type": "group",
-          "visible": true,
-          "width": 0,
-          "x": 0,
-          "y": 0
-        }
-      ],
-      "opacity": 1,
-      "type": "objectgroup",
-      "visible": true,
-      "x": 0,
-      "y": 0
-    },
-    {
-      "draworder": "topdown",
-      "id": 4,
-      "name": "Metadata",
-      "objects": [
-        {
-          "height": 16,
-          "id": 3,
-          "name": "room_id",
-          "properties": [
-            {
-              "name": "room_id",
-              "type": "string",
-              "value": "A3"
-            }
-          ],
-          "rotation": 0,
-          "type": "room_id",
-          "visible": true,
-          "width": 16,
-          "x": 0,
-          "y": 0
-        },
-        {
-          "height": 16,
-          "id": 4,
-          "name": "door_north",
-          "properties": [
-            {
-              "name": "type",
-              "type": "string",
-              "value": "door"
-            },
-            {
-              "name": "dir",
-              "type": "string",
-              "value": "north"
-            }
-          ],
-          "rotation": 0,
-          "type": "door",
-          "visible": true,
-          "width": 16,
-          "x": 160,
-          "y": 0
-        },
-        {
-          "height": 16,
-          "id": 5,
-          "name": "door_south",
-          "properties": [
-            {
-              "name": "type",
-              "type": "string",
-              "value": "door"
-            },
-            {
-              "name": "dir",
-              "type": "string",
-              "value": "south"
-            }
-          ],
-          "rotation": 0,
-          "type": "door",
-          "visible": true,
-          "width": 16,
-          "x": 160,
-          "y": 224
-        },
-        {
-          "height": 16,
-          "id": 6,
-          "name": "door_east",
-          "properties": [
-            {
-              "name": "type",
-              "type": "string",
-              "value": "door"
-            },
-            {
-              "name": "dir",
-              "type": "string",
-              "value": "east"
-            }
-          ],
-          "rotation": 0,
-          "type": "door",
-          "visible": true,
-          "width": 16,
-          "x": 304,
-          "y": 120
-        },
-        {
-          "height": 16,
-          "id": 7,
-          "name": "door_west",
-          "properties": [
-            {
-              "name": "type",
-              "type": "string",
-              "value": "door"
-            },
-            {
-              "name": "dir",
-              "type": "string",
-              "value": "west"
-            }
-          ],
-          "rotation": 0,
-          "type": "door",
-          "visible": true,
-          "width": 16,
-          "x": 0,
-          "y": 120
-        }
-      ],
-      "opacity": 1,
-      "type": "objectgroup",
-      "visible": true,
-      "x": 0,
-      "y": 0
-    }
+	{
+	  "data": "1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,3,3,3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,3,3,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,1,1,3,3,3,3,3,1,1,1,1,1,1,1,1,1,1,\n1,1,1,1,1,1,1,3,3,3,3,2,2,1,1,1,1,1,1,1,\n1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,\n1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1",
+	  "encoding": "csv",
+	  "height": 15,
+	  "id": 1,
+	  "name": "Ground",
+	  "opacity": 1,
+	  "type": "tilelayer",
+	  "visible": true,
+	  "width": 20,
+	  "x": 0,
+	  "y": 0,
+	  "offsetx": 0,
+	  "offsety": 0,
+	  "parallaxx": 1.0,
+	  "parallaxy": 1.0,
+	  "tintcolor": "#000000"
+	},
+	{
+	  "data": "2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,\n2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2",
+	  "encoding": "csv",
+	  "height": 15,
+	  "id": 2,
+	  "name": "Collision",
+	  "opacity": 1,
+	  "type": "tilelayer",
+	  "visible": true,
+	  "width": 20,
+	  "x": 0,
+	  "y": 0,
+	  "offsetx": 0,
+	  "offsety": 0,
+	  "parallaxx": 1.0,
+	  "parallaxy": 1.0,
+	  "tintcolor": "#000000"
+	},
+	{
+	  "draworder": "topdown",
+	  "id": 3,
+	  "name": "Entities",
+	  "objects": [
+		{
+		  "height": 32,
+		  "id": 1,
+		  "name": "player_spawn",
+		  "properties": [
+			{
+			  "name": "type",
+			  "type": "string",
+			  "value": "player_spawn"
+			}
+		  ],
+		  "rotation": 0.0,
+		  "type": "player_spawn",
+		  "visible": true,
+		  "width": 32,
+		  "x": 640.0,
+		  "y": 480.0
+		},
+		{
+		  "height": 0,
+		  "id": 2,
+		  "name": "enemies",
+		  "properties": [
+			{
+			  "name": "type",
+			  "type": "string",
+			  "value": "group"
+			}
+		  ],
+		  "rotation": 0.0,
+		  "type": "group",
+		  "visible": true,
+		  "width": 0,
+		  "x": 0.0,
+		  "y": 0.0
+		}
+	  ],
+	  "opacity": 1,
+	  "type": "objectgroup",
+	  "visible": true,
+	  "x": 0,
+	  "y": 0
+	},
+	{
+	  "draworder": "topdown",
+	  "id": 4,
+	  "name": "Metadata",
+	  "objects": [
+		{
+		  "height": 32,
+		  "id": 3,
+		  "name": "room_id",
+		  "properties": [
+			{
+			  "name": "room_id",
+			  "type": "string",
+			  "value": "A3"
+			}
+		  ],
+		  "rotation": 0.0,
+		  "type": "room_id",
+		  "visible": true,
+		  "width": 32,
+		  "x": 0.0,
+		  "y": 0.0
+		},
+		{
+		  "height": 32,
+		  "id": 4,
+		  "name": "door_north",
+		  "properties": [
+			{
+			  "name": "dir",
+			  "type": "string",
+			  "value": "north"
+			},
+			{
+			  "name": "type",
+			  "type": "string",
+			  "value": "door"
+			}
+		  ],
+		  "rotation": 0.0,
+		  "type": "door",
+		  "visible": true,
+		  "width": 32,
+		  "x": 640.0,
+		  "y": 0.0
+		},
+		{
+		  "height": 32,
+		  "id": 5,
+		  "name": "door_south",
+		  "properties": [
+			{
+			  "name": "dir",
+			  "type": "string",
+			  "value": "south"
+			},
+			{
+			  "name": "type",
+			  "type": "string",
+			  "value": "door"
+			}
+		  ],
+		  "rotation": 0.0,
+		  "type": "door",
+		  "visible": true,
+		  "width": 32,
+		  "x": 640.0,
+		  "y": 896.0
+		},
+		{
+		  "height": 32,
+		  "id": 6,
+		  "name": "door_east",
+		  "properties": [
+			{
+			  "name": "dir",
+			  "type": "string",
+			  "value": "east"
+			},
+			{
+			  "name": "type",
+			  "type": "string",
+			  "value": "door"
+			}
+		  ],
+		  "rotation": 0.0,
+		  "type": "door",
+		  "visible": true,
+		  "width": 32,
+		  "x": 1216.0,
+		  "y": 480.0
+		},
+		{
+		  "height": 32,
+		  "id": 7,
+		  "name": "door_west",
+		  "properties": [
+			{
+			  "name": "dir",
+			  "type": "string",
+			  "value": "west"
+			},
+			{
+			  "name": "type",
+			  "type": "string",
+			  "value": "door"
+			}
+		  ],
+		  "rotation": 0.0,
+		  "type": "door",
+		  "visible": true,
+		  "width": 32,
+		  "x": 0.0,
+		  "y": 480.0
+		}
+	  ],
+	  "opacity": 1,
+	  "type": "objectgroup",
+	  "visible": true,
+	  "x": 0,
+	  "y": 0
+	}
   ],
   "nextlayerid": 5,
-  "nextobjectid": 8,
+  "nextobjectid": 4,
   "orientation": "orthogonal",
   "renderorder": "right-down",
   "tiledversion": "1.11.2",
-  "tileheight": 16,
+  "tileheight": 32,
   "tilesets": [
-    {
-      "firstgid": 1,
-      "source": "../tiles/tileset.tsx"
-    }
+	{
+	  "firstgid": 1,
+	  "source": "dunjon_tileset.tsx"
+	}
   ],
-  "tilewidth": 16,
+  "tilewidth": 32,
   "type": "map",
   "version": "1.10",
-  "width": 20
+  "width": 20,
+  "backgroundcolor": "#000000"
 }

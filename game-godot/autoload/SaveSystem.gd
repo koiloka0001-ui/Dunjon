@@ -81,10 +81,11 @@ func get_default_state() -> Dictionary:
 
 func _ready() -> void:
 	set_process(true)
-	if EventBus.room_cleared.is_connected(autosave) == false:
-		EventBus.room_cleared.connect(autosave)
+	# TODO: Connect to room_cleared signal when RoomGates system is implemented
+	# if EventBus.room_cleared.is_connected(autosave) == false:
+	#	EventBus.room_cleared.connect(autosave)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("save_manual"):
 		autosave()
 		emit_signal("manual_save_done")

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8'?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="20" height="15" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="4">
+ <tileset firstgid="1" source="dunjon_tileset.tsx" />
+ <layer id="1" name="Ground" width="20" height="15">
+  <data encoding="csv">1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,</data>
+ </layer>
+ <layer id="2" name="Collision" width="20" height="15">
+  <data encoding="csv">2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,</data>
+ </layer>
+ <objectgroup id="3" name="Entities" draworder="topdown">
+  <object id="1" name="player_spawn" type="player_spawn" x="640.0" y="480.0" width="32" height="32" visible="true">
+   <properties>
+    <property name="type" type="string" value="player_spawn" />
+   </properties>
+  </object>
+  <object id="2" name="enemies" type="group" x="0.0" y="0.0" width="0" height="0" visible="true">
+   <properties>
+    <property name="type" type="string" value="group" />
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="Metadata" draworder="topdown">
+  <object id="3" name="room_id" type="room_id" x="0.0" y="0.0" width="32" height="32" visible="true">
+   <properties>
+    <property name="room_id" type="string" value="A4" />
+   </properties>
+  </object>
+  <object id="4" name="door_north" type="door" x="640.0" y="0.0" width="32" height="32" visible="true">
+   <properties>
+    <property name="type" type="string" value="door" />
+    <property name="dir" type="string" value="north" />
+   </properties>
+  </object>
+  <object id="5" name="door_south" type="door" x="640.0" y="896.0" width="32" height="32" visible="true">
+   <properties>
+    <property name="type" type="string" value="door" />
+    <property name="dir" type="string" value="south" />
+   </properties>
+  </object>
+ </objectgroup>
+</map>

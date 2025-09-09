@@ -3,8 +3,9 @@ extends Node
 ## RoomImporter - Handles importing room data from JSON and instantiating entities
 ## Parses Tiled JSON export format and creates appropriate Godot nodes
 
-# Player scene reference - loaded dynamically for better error handling
+# Entity scene references - loaded dynamically for better error handling
 var player_scene: PackedScene
+var enemy_scene: PackedScene
 
 # Track spawned entities to prevent duplicates
 var spawned_entities: Array[Node] = []
@@ -25,7 +26,11 @@ func import_room_from_json(room_data: Dictionary, parent_node: Node) -> void:
 	var entities_found = 0
 	var tile_layers_found = 0
 	
-	for layer in room_data.layers:
+	print_debug("[RoomImporter] 📋 Total layers to process: ", room_data.layers.size())
+	
+	for i in range(room_data.layers.size()):
+		var layer = room_data.layers[i]
+		print_debug("[RoomImporter] 🔍 Processing layer ", i, ": ", layer.name, " (type: ", layer.type, ")")
 		if layer.type == "objectgroup" and layer.name == "Entities":
 			print_debug("[RoomImporter] 🎯 Found Entities layer, parsing objects...")
 			entities_found = parse_entities_layer(layer, parent_node)
@@ -33,6 +38,8 @@ func import_room_from_json(room_data: Dictionary, parent_node: Node) -> void:
 			print_debug("[RoomImporter] 🗺️ Found tile layer: ", layer.name)
 			parse_tile_layer(layer, parent_node)
 			tile_layers_found += 1
+		else:
+			print_debug("[RoomImporter] ⚠️ Skipping layer: ", layer.name, " (type: ", layer.type, ")")
 	
 	print_debug("[RoomImporter] 📊 Total objects processed: ", entities_found)
 	print_debug("[RoomImporter] 🗺️ Total tile layers processed: ", tile_layers_found)
@@ -118,7 +125,7 @@ func create_tile_visual(tile_id: int, x: int, y: int, parent: Control) -> void:
 			sprite.region_enabled = true
 			sprite.region_rect = Rect2(32, 0, 32, 32)  # Ground tile region
 			parent.add_child(sprite)
-			print_debug("[RoomImporter] Ground tile placed at: ", tile_position)
+			# print_debug("[RoomImporter] Ground tile placed at: ", tile_position)
 		2:  # Wall
 			sprite.region_enabled = true
 			sprite.region_rect = Rect2(64, 0, 32, 32)  # Wall tile region
@@ -135,7 +142,7 @@ func create_tile_visual(tile_id: int, x: int, y: int, parent: Control) -> void:
 			collision_shape.shape = rectangle_shape
 			static_body.add_child(collision_shape)
 			
-			print_debug("[RoomImporter] Wall tile and collision at: ", tile_position)
+			# print_debug("[RoomImporter] Wall tile and collision at: ", tile_position)
 		_:
 			# Default fallback for unknown tile IDs
 			create_tile_visual_fallback(tile_id, tile_position, parent)
@@ -195,7 +202,7 @@ func create_tile_visual_fallback(tile_id: int, tile_position: Vector2, parent: C
 			rect.position = tile_position
 			rect.color = Color(0.5, 0.5, 0.5)  # Default gray
 			parent.add_child(rect)
-			print_debug("[RoomImporter] Unknown tile ID ", tile_id, " fallback at: ", tile_position)
+			# print_debug("[RoomImporter] Unknown tile ID ", tile_id, " fallback at: ", tile_position)
 
 func parse_object(obj: Dictionary, parent_node: Node) -> void:
 	"""Parse a single object and spawn the appropriate entity"""
@@ -208,6 +215,9 @@ func parse_object(obj: Dictionary, parent_node: Node) -> void:
 		"player_spawn":
 			print_debug("[RoomImporter] 🎮 Player spawn marker detected!")
 			spawn_player(obj, parent_node)
+		"enemy_spawn":
+			print_debug("[RoomImporter] 👹 Enemy spawn marker detected!")
+			spawn_enemy(obj, parent_node)
 		_:
 			# Handle other entity types here in the future
 			print_debug("[RoomImporter] ⚠️ Unknown object type: '", obj_type, "' - skipping")
@@ -254,6 +264,35 @@ func spawn_player(obj: Dictionary, parent_node: Node) -> void:
 	spawned_entities.append(player_instance)
 	
 	print_debug("[RoomImporter] ✅ Player spawned at position: ", spawn_pos)
+	
+	# Debug: Draw a temporary rectangle to confirm positioning
+	draw_debug_rectangle(parent_node, spawn_pos)
+
+func spawn_enemy(obj: Dictionary, parent_node: Node) -> void:
+	"""Spawn an enemy at the specified position"""
+	
+	# Load Enemy scene with error handling
+	if not enemy_scene:
+		enemy_scene = load("res://entities/enemy/Enemy.tscn")
+		if enemy_scene == null:
+			push_error("❌ Failed to load Enemy.tscn")
+			return
+	
+	# Create enemy instance
+	var enemy_instance = enemy_scene.instantiate()
+	if enemy_instance == null:
+		push_error("❌ Failed to instantiate Enemy scene")
+		return
+	
+	# Set position (Tiled coordinates are already correct for 32x32 tiles)
+	var spawn_pos = Vector2(obj.x, obj.y)
+	enemy_instance.position = spawn_pos
+	
+	# Add to parent node
+	parent_node.add_child(enemy_instance)
+	spawned_entities.append(enemy_instance)
+	
+	print_debug("[RoomImporter] ✅ Enemy spawned at position: ", spawn_pos)
 	
 	# Debug: Draw a temporary rectangle to confirm positioning
 	draw_debug_rectangle(parent_node, spawn_pos)

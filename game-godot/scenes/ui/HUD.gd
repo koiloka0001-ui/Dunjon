@@ -91,7 +91,7 @@ func _ready() -> void:
 func set_health(value: int, max_health: int) -> void:
 	print("[HUD] Setting health: ", value, "/", max_health)
 	# Update existing heart labels
-	var full_hearts = value / 2
+	var full_hearts = value / 2.0
 	var half_heart = value % 2
 	for i in range(hearts.size()):
 		if i < full_hearts:

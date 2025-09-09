@@ -1,0 +1,17 @@
+{
+  "exportSettings": [
+    {
+      "name": "Godot JSON Export",
+      "fileExtension": "json",
+      "exportFormat": "json",
+      "exportPath": "../game-godot/data/rooms/",
+      "exportOptions": {
+        "encoding": "csv",
+        "compression": "none",
+        "includeTileset": false
+      }
+    }
+  ]
+}
+
+

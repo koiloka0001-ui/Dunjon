@@ -61,6 +61,24 @@
           "width": 32,
           "x": 320.0,
           "y": 240.0
+        },
+        {
+          "height": 32,
+          "id": 2,
+          "name": "enemy_spawn",
+          "properties": [
+            {
+              "name": "type",
+              "type": "string",
+              "value": "enemy_spawn"
+            }
+          ],
+          "rotation": 0.0,
+          "type": "enemy_spawn",
+          "visible": true,
+          "width": 32,
+          "x": 480.0,
+          "y": 320.0
         }
       ],
       "opacity": 1,

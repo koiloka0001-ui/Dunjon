@@ -1,10 +1,10 @@
-extends Control
+extends CanvasLayer
 
-@onready var screen_shake_slider = $VBoxContainer/ScreenShake/HSlider
-@onready var damage_flash_toggle = $VBoxContainer/DamageFlash/CheckBox
-@onready var aim_assist_slider = $VBoxContainer/AimAssist/HSlider
-@onready var difficulty_dropdown = $VBoxContainer/Difficulty/OptionButton
-@onready var input_remap_button = $VBoxContainer/InputRemap
+@onready var screen_shake_slider = $Control/VBoxContainer/ScreenShake/HSlider
+@onready var damage_flash_toggle = $Control/VBoxContainer/DamageFlash/CheckBox
+@onready var aim_assist_slider = $Control/VBoxContainer/AimAssist/HSlider
+@onready var difficulty_dropdown = $Control/VBoxContainer/Difficulty/OptionButton
+@onready var input_remap_button = $Control/VBoxContainer/InputRemap
 
 func _ready() -> void:
 	load_from_options()

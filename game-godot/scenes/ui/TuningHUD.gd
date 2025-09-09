@@ -3,6 +3,7 @@ extends CanvasLayer
 const CONFIG_PATH := "res://../config/tuning.json"
 
 var tuning := {}
+var value_labels := {}  # Store references to value labels
 
 func _ready() -> void:
 	load_tuning()
@@ -58,9 +59,10 @@ func save_tuning() -> void:
 func build_ui() -> void:
 	var vbox = $PanelContainer/VBoxContainer
 	
-	# Clear existing children
+	# Clear existing children and value label references
 	for child in vbox.get_children():
 		child.queue_free()
+	value_labels.clear()
 
 	# Add title
 	var title_label = Label.new()
@@ -102,6 +104,9 @@ func build_ui() -> void:
 		val_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		val_label.modulate = Color.CYAN
 		hbox.add_child(val_label)
+		
+		# Store reference to value label
+		value_labels[key] = val_label
 
 		vbox.add_child(hbox)
 
@@ -138,10 +143,9 @@ func _on_slider_changed(value: float, key: String) -> void:
 	tuning[key] = value
 	save_tuning()
 
-	var vbox = $PanelContainer/VBoxContainer
-	var val_label = vbox.get_node(key + "_value")
-	if val_label:
-		val_label.text = str(value)
+	# Update the value label using stored reference
+	if value_labels.has(key):
+		value_labels[key].text = str(value)
 	
 	print("[TuningHUD] Updated ", key, " to ", value)
 
@@ -177,23 +181,23 @@ func _on_load_preset_pressed() -> void:
 	else:
 		print("[TuningHUD] No easy.json preset found")
 
-func save_preset(name: String) -> void:
+func save_preset(preset_name: String) -> void:
 	var dir = DirAccess.open("res://../tools/presets")
 	if not dir:
 		DirAccess.make_dir_recursive_absolute("res://../tools/presets")
 
-	var file = FileAccess.open("res://../tools/presets/%s.json" % name, FileAccess.WRITE)
+	var file = FileAccess.open("res://../tools/presets/%s.json" % preset_name, FileAccess.WRITE)
 	if file:
 		file.store_string(JSON.stringify(tuning, "  "))
 		file.close()
-		print("[TuningHUD] Saved preset: ", name)
+		print("[TuningHUD] Saved preset: ", preset_name)
 	else:
-		push_error("[TuningHUD] Could not save preset: ", name)
+		push_error("[TuningHUD] Could not save preset: ", preset_name)
 
-func load_preset(name: String) -> void:
-	var file = FileAccess.open("res://../tools/presets/%s.json" % name, FileAccess.READ)
+func load_preset(preset_name: String) -> void:
+	var file = FileAccess.open("res://../tools/presets/%s.json" % preset_name, FileAccess.READ)
 	if not file:
-		push_warning("[TuningHUD] Preset not found: ", name)
+		push_warning("[TuningHUD] Preset not found: ", preset_name)
 		return
 
 	var content = file.get_as_text()
@@ -203,9 +207,9 @@ func load_preset(name: String) -> void:
 		file.close()
 		save_tuning()
 		build_ui()
-		print("[TuningHUD] Loaded preset: ", name)
+		print("[TuningHUD] Loaded preset: ", preset_name)
 	else:
-		push_error("[TuningHUD] Invalid JSON in preset: ", name)
+		push_error("[TuningHUD] Invalid JSON in preset: ", preset_name)
 		file.close()
 
 # Get list of available presets
